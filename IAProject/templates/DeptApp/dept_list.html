@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Show Depts</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container jumbotron">
+    <h1 style="text-align: center;">All Departments</h1>
+    <br><br>
+        {% if object_list %}
+            <table class="table table-striped table-hover">
+                <tr class="thead-dark">
+                    <th>Dept ID</th>
+                    <th>Dept Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                {% for dept in object_list %}
+                    <tr>
+                        <td>{{dept.id}}</td>
+                        <td>{{dept.name}}</td>
+                        <td><a href="{% url 'update_dept' dept.id %}"><button class="btn btn-warning">Update</button></a></td>
+                        <td><a href="{% url 'delete_dept' dept.id %}"><button class="btn btn-danger">Delete</button></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <a href="{% url 'create_dept' %}">
+                <button class="btn btn-primary">
+                    Add Dept
+                </button>
+            </a>
+        {% else %}
+            <h5>No records found, Please add few by hitting following button!</h5>
+            <br>
+            <a href="{% url 'create_dept' %}">
+                <button class="btn btn-primary">
+                    Add Dept
+                </button>
+            </a>
+        {% endif %}
+    </div>
+{% endblock %}
+        

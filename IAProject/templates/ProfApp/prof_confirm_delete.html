@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Delete Professor</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="width: 60%;">
+        <form method="POST" class="jumbotron">
+            {% csrf_token %}
+            <h5>Are you sure to delete Professor with <b>Salary-{{object.salary}} LPA</b> and <b>Name-{{object.name}}</b>?</h5>
+            <br>
+            <input type="submit" value="Delete" class="btn btn-danger">
+            <a href="{% url 'retrive_prof' %}">
+                <input type="button" value="Cancel" class="btn btn-dark" style="margin-left: 10%;">
+            </a> 
+        </form>
+    </div>
+    
+{% endblock %}

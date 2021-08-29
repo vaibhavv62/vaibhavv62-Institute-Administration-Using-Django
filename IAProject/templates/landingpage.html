@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Home Page</title>
+{% endblock %}
+
+
+{% block nav %}
+{% endblock %}
+
+{% block content %}
+    <div class="container jumbotron">
+        <h1 style="text-align: center;">Institute Administration    </h1>
+        <ul style="text-align: center;">
+            <button class="btn btn-link"><a href="https://github.com/vaibhavv62/vaibhavv62-Institute-Administration-Using-Django">Contribute</a></button>
+        </ul>
+        <hr>
+
+        <br><br><br><br>
+        <div class="dropdown" style="text-align: center;">
+            <h3>Choose your role:</h3>
+            <button class="btn btn-success btn-lg dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                I am a
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <a class="dropdown-item" href="#">Admin</a>
+                <a class="dropdown-item" href="{% url 'retrive_prof' %}">Professor</a>
+                <a class="dropdown-item" href="{% url 'retrive_stud' %}">Student</a>
+            </div>
+        </div>
+    
+
+        <br><br><br><br>
+        <hr>
+        <!-- <div style="text-align: center;">
+            <a href="{% url 'retrive_dept' %}" >
+                <input type="button" value="Go to All Departments" class="btn btn-primary">
+            </a>
+        </div> -->
+    </div>
+{% endblock %}

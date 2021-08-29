@@ -1,0 +1,15 @@
+####2 layout.html
+            <li><a href="{% url 'retrive_prof' %}">Professors</a></li>
+            <li><a href="{% url 'retrive_stud' %}">Students</a></li>
+
+
+
+####2 dept_list.html
+{% block search %}
+    <div style="margin-right: 20px;" class="form-inline my-2 my-lg-0">
+        <form action="{% url 'search_dept' %}" class="form-inline my-2 my-lg-0">
+            <input type="text" name="dept_name" class="form-control mr-sm-2" autocomplete="off">
+            <input type="submit" value="Search Dept." class="btn btn-success my-2 my-sm-0">
+        </form>
+    </div>         
+{% endblock %}

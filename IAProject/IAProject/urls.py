@@ -26,4 +26,5 @@ urlpatterns = [
     path('prof/',include('ProfApp.urls')),
     path('stud/',include('StudentApp.urls')),
     path('subj/',include('SubjectApp.urls')),
+    path('staff/',include('StaffApp.urls')),
 ]

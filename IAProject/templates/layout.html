@@ -18,7 +18,17 @@
                 <li><a href="{% url 'retrive_prof' %}">Professors</a></li>
                 <li><a href="{% url 'retrive_stud' %}">Students</a></li>
                 <li><a href="{% url 'retrive_subj' %}">Subjects</a></li>
-                <span style="float: right; margin-top: 1%;">
+                
+                <span style="float: right;">
+                    <span style="float: right;">
+                        {% if user.is_authenticated %}
+                            <li><a>Hello,{{user.first_name}}</a></li>
+                            <li><a href="{% url 'logout_stud' %}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url 'login_stud' %}">Login</a></li>
+                            <li><a href="">Register</a></li>
+                        {% endif %}
+                    </span>
                     {% block search %}
                         
                     {% endblock %}

@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 # Create your views here.
@@ -32,6 +33,14 @@ class StudentUpdateView(UpdateView):
 class StudentDeleteView(DeleteView):
     model = Student
     success_url = reverse_lazy('retrive_stud')
+
+def studentDeleteAllView(request):
+    if request.method == 'POST':
+        Student.objects.all().delete()
+        return redirect('retrive_stud')
+    template_name = "StudentApp/student_confirm_delete_all.html"
+    context = {}
+    return render(request,template_name,context)
 
 def studentSearchView(request):
     n = request.GET.get('stud_name')
@@ -83,3 +92,14 @@ def studentLoginView(request):
 def studentLogoutView(request):
     logout(request)
     return redirect('login_stud')
+
+def populateFakeRecordsView(request):
+    import sys
+    # print(settings.BASE_DIR)
+    sys.path.append(settings.BASE_DIR)
+    import populate_students
+    try:
+        populate_students.addFakeStudents(20)
+    except:
+        populateFakeRecordsView()
+    return redirect('retrive_stud')

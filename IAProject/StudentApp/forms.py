@@ -20,3 +20,17 @@ class StudentModelForm(forms.ModelForm):
             raise forms.ValidationError('Marks must be in range of 0 to 100...')
         else:
             return user_entered_marks
+
+    def clean_college_fees(self):
+        user_entered_college_fees = self.cleaned_data['college_fees']
+        if user_entered_college_fees < 0:
+            raise forms.ValidationError('College Fees must be greater than 0...') 
+        else:
+            return user_entered_college_fees
+
+    def clean_exam_fees(self):
+        user_entered_exam_fees = self.cleaned_data['exam_fees']
+        if user_entered_exam_fees < 0:
+            raise forms.ValidationError('Exam Fees must be greater than 0...') 
+        else:
+            return user_entered_exam_fees

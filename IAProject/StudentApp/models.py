@@ -7,6 +7,8 @@ class Student(models.Model):
     rn = models.IntegerField(unique=True)
     name = models.CharField(max_length=32)
     marks = models.FloatField()
+    college_fees = models.FloatField(default=0)
+    exam_fees = models.FloatField(default=0)
 
     def __str__(self) -> str:
         return f"{self.rn},{self.name}"

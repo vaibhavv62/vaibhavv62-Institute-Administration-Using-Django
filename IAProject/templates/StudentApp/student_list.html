@@ -27,6 +27,8 @@
                     <th>Marks</th>
                     <th>Dept.</th>
                     <th>Branch</th>
+                    <th>College Fees</th>
+                    <th>Exam Fees</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -37,22 +39,30 @@
                         <td>{{stud.marks}}</td>
                         <td>{{stud.branch.dept.name}}</td>
                         <td>{{stud.branch}}</td>
+                        <td>{{stud.college_fees}}</td>
+                        <td>{{stud.exam_fees}}</td>
                         <td><a href="{% url 'update_stud' stud.id %}"><button class="btn btn-warning">Update</button></a></td>
                         <td><a href="{% url 'delete_stud' stud.id %}"><button class="btn btn-danger">Delete</button></a></td>
                     </tr>
                 {% endfor %}
             </table>
+
+            
             <br>
             <div class="row">
-                <div class="col-6">
+                <div class="col-10">
                     <a href="{% url 'create_stud' %}">
                         <button class="btn btn-primary">
                             Add Student
                         </button>
                     </a>
                 </div>
-                <div class="col-6">
-
+                <div class="col-2">
+                    <a href="{% url 'delete_all_stud' %}">
+                        <button class="btn btn-danger">
+                            Delete All
+                        </button>
+                    </a>
                 </div>
             </div>
             
@@ -61,12 +71,22 @@
             
                 <h5>No records found, Please add few by hitting following button!</h5>
                 <br>
-                <a href="{% url 'create_stud' %}">
-                    <button class="btn btn-primary">
-                        Add Student
-                    </button>
-                </a>
-            
+                <div class="row">
+                    <div class="col-9">
+                        <a href="{% url 'create_stud' %}">
+                            <button class="btn btn-primary">
+                                Add Student
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-3">
+                        <a href="{% url 'populate_stud' %}">
+                            <button class="btn btn-success">
+                                Generate 20 Fake Records
+                            </button>
+                        </a>
+                    </div>
+                </div>                  
         {% endif %}
     </div>
 {% endblock %}

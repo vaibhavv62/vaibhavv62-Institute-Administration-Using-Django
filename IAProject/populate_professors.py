@@ -14,24 +14,21 @@ from ProfApp.models import Prof
 faker = Faker()
 branches_list = Branch.objects.all()
 
-n = int(input("How many professor records do you want to add?"))
-for _ in range(n):
-    br = random.choice(branches_list)
-    name = faker.name()
-    salary = faker.random_int(0,100)
-    print("Branch-random.choice(branches_list):-",br)
-    print("Name-faker.name():-",name)
-    print("Marks-faker.random_int(0,100):-",salary)
+def addFakeProfessors(n):
+    for _ in range(n):
+        br = random.choice(branches_list)
+        name = faker.name()
+        salary = faker.random_int(0,100)
+        print("Branch-random.choice(branches_list):-",br)
+        print("Name-faker.name():-",name)
+        print("Marks-faker.random_int(0,100):-",salary)
 
-    '''
-    try:
-        prof = Prof.objects.get_or_create(branch=branch,name=name,salary=salary)
-    except Prof.DoesNotExist:
-        prof = Prof(branch=branch,name=name,salary=salary)
+        prof = Prof(name=name,salary=salary)
         prof.save()
+        prof.branch.add(br)
         print("Professor Record Added")
-    '''
-    prof = Prof(name=name,salary=salary)
-    prof.save()
-    prof.branch.add(br)
-    print("Professor Record Added")
+
+
+if __name__ == '__main__':
+    n = int(input("How many professor records do you want to add?"))
+    addFakeProfessors(n)

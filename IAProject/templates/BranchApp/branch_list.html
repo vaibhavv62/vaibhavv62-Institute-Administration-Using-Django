@@ -25,6 +25,8 @@
                     <th>Branch Name</th>
                     <th>Branch Intake</th>
                     <th>Branch Dept.</th>
+                    <th>Branch Seat Fees</th>
+                    <th>Branch Exam Fees</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -34,6 +36,8 @@
                         <td>{{branch.name}}</td>
                         <td>{{branch.intake}}</td>
                         <td>{{branch.dept}}</td>
+                        <td>{{branch.college_fees}}</td>
+                        <td>{{branch.exam_fees}}</td>
                         <td><a href="{% url 'update_branch' branch.id %}"><button class="btn btn-warning">Update</button></a></td>
                         <td><a href="{% url 'delete_branch' branch.id %}"><button class="btn btn-danger">Delete</button></a></td>
                     </tr>

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'StudentApp',
     'SubjectApp',
     'StaffApp',
+    'AccountsApp'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

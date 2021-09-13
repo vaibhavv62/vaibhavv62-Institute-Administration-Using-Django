@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Activate Account</title>
+{% endblock title %}
+
+{% block content %}
+    <div  class="container" style="width:40%; margin-top: 5%" >
+        <div class="jumbotron">
+            {% if messages %}
+                {% for message in messages %}
+
+                    {% if message.tags == 'error' %}
+                        <div class="alert alert-danger">
+                    {% else %}
+                        <div class="alert alert-{{ message.tags }}">
+                    {% endif %}
+
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+            <b>Account activation email sent!</b>
+            <p>An email has been sent to your email address containing an activation link. Please click on the link to activate your account. If you do not click the link your account will remain inactive and you will not receive further emails. If you do not receive the email within a few minutes, please check your spam folder.</p>
+
+            <a href="//mail.google.com/"><button class="btn btn-info">Check Email</button></a>
+            <a href="{% url 'login' %}"><button class="btn btn-success">Log In</button></a>
+        </div>
+
+    </div>
+{% endblock content %}

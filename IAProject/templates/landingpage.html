@@ -6,6 +6,24 @@
 
 
 {% block nav %}
+<ul class="my_navbar">
+    
+    <span style="float: right;">
+        <span style="float: right;">
+            {% if user.is_authenticated %}
+                <li><a>Hello,{{user.first_name}}</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </span>
+        {% block search %}
+            
+        {% endblock %}
+    </span>
+</ul>
 {% endblock %}
 
 {% block content %}

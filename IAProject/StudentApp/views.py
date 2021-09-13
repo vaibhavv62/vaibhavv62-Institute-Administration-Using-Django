@@ -101,5 +101,5 @@ def populateFakeRecordsView(request):
     try:
         populate_students.addFakeStudents(20)
     except:
-        populateFakeRecordsView()
+        populateFakeRecordsView(request)
     return redirect('retrive_stud')

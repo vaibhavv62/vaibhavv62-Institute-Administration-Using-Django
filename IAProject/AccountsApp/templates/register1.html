@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Sign Up</title>
+{% endblock title %}
+
+{% block content %}
+    <div  class="container" style="width:50%; margin-top: 5%" >
+        <div class="jumbotron">
+            <form method="post">
+                <h1 style="text-align: center">SignUp</h1>
+                <br><br>
+                {% csrf_token %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {{ form|crispy }}
+
+                <br>
+                <div class="form-row">
+                    <div class="col-9">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'login' %}">Already have an account?</a>
+                    </div>
+                </div>
+
+                {#                <div class="row">#}
+                {#                    <div#}
+{#                </div>#}
+                {#            <a href="">Forgot Password?</a>#}
+                {#            <a href="">Need an account?</a>#}
+                {#            <button type="submit" class="btn btn-primary">Login</button>#}
+        </form>
+        </div>
+
+    </div>
+{% endblock content %}

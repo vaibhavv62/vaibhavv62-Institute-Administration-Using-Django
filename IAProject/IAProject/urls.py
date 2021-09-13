@@ -20,7 +20,7 @@ from .views import landingView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',landingView),
+    path('',landingView,name='home'),
     path('dept/',include('DeptApp.urls')),
     path('branch/',include('BranchApp.urls')),
     path('prof/',include('ProfApp.urls')),
